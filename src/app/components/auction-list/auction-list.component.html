@@ -1,0 +1,19 @@
+<div>
+  <mat-tab-group animationDuration="10000ms">
+    <mat-tab label="Past">
+      <div *ngFor="let auction of auctions">
+        <app-auction-list-item [auction]="auction"></app-auction-list-item>
+      </div>
+    </mat-tab>
+    <mat-tab label="Active">
+      <div *ngFor="let auction of auctions">
+        <app-auction-list-item [auction]="auction"></app-auction-list-item>
+      </div>
+    </mat-tab>
+    <mat-tab label="Future">
+      <div *ngFor="let auction of auctions">
+        <app-auction-list-item [auction]="auction"></app-auction-list-item>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,0 +1,28 @@
+<div>
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title class="text-primary">{{ auction.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <div>
+          <span>Start: {{auction.start | date: 'dd-MM-yyyy hh:mm'}}</span>
+          <span>End: {{auction.end | date: 'dd-MM-yyyy hh:mm'}}</span>
+        </div>
+        <div *ngIf="isActive() || isFuture()">
+          <span>{{ isActive() ? 'Ends in: ' : 'Before start: ' }}</span>
+          <span><app-timer [duration]="duration()"></app-timer></span>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions *ngIf="isActive()">
+      <button mat-button>JOIN</button>
+    </mat-card-actions>
+    <mat-card-actions *ngIf="isFuture()">
+      <button mat-button>DETAILS</button>
+    </mat-card-actions>
+    <mat-card-actions *ngIf="isPast()">
+      <button mat-button>VIEW RESULTS</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
