@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
   <span>Sothbey`s Killer</span>
   <a mat-raised-button>Auctions</a>
-  <a mat-raised-button>Sign-in</a>
-  <a mat-raised-button>Sign-up</a>
-  <a mat-raised-button>Log Out</a>
+  <a *ngIf="!userService.isAuthenticated()()" mat-raised-button>Sign-in</a>
+  <a *ngIf="!userService.isAuthenticated()()" mat-raised-button>Sign-up</a>
+  <a *ngIf="userService.isAuthenticated()()" (click)="userService.logout()" mat-raised-button>Log Out</a>
   <mat-slide-toggle (change)="themeService.toggleTheme()">Slide me!</mat-slide-toggle>
 </mat-toolbar>

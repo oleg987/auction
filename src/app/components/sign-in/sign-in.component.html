@@ -1,26 +1,39 @@
-<div>
-  <div>
-    <mat-card>
-      <mat-card-content>
-        <span>Sign-in</span>
-      </mat-card-content>
-      <mat-card-content>
-        <mat-form-field appearance="outline" color="primary">
-          <mat-label>E-mail</mat-label>
-          <input matInput placeholder="Enter your e-mail">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-content>
-        <mat-form-field appearance="outline" color="primary">
-          <mat-label>Password</mat-label>
-          <input type="password" matInput placeholder="Enter your password">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-content>
-        <button mat-flat-button>Sign-in</button>
-      </mat-card-content>
+<div class="card-wrapper">
+  <div class="mid-card">
+    <mat-card class="full-width-element">
+      <div>
+        <mat-card-content>
+          <span>Sign-in</span>
+        </mat-card-content>
+      </div>
+      <form [formGroup]="form" (submit)="submit()">
+        <div>
+          <mat-card-content>
+            <mat-form-field>
+              <mat-label>E-mail</mat-label>
+              <input formControlName="email" matInput placeholder="Enter your e-mail" required>
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-error *ngIf="!form.controls.email.untouched && form.controls.email.invalid">
+                <span>This is error.</span>
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </div>
+        <div>
+          <mat-card-content>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input type="password" matInput placeholder="Enter your password">
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+          </mat-card-content>
+        </div>
+        <div>
+          <mat-card-content>
+            <button mat-flat-button (click)="submit()">Sign-in</button>
+          </mat-card-content>
+        </div>
+      </form>
     </mat-card>
   </div>
 </div>

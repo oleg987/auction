@@ -19,6 +19,8 @@ import { TimerComponent } from './components/timer/timer.component';
 import { AuctionListItemComponent } from './components/auction-list-item/auction-list-item.component';
 import { AuctionListComponent } from './components/auction-list/auction-list.component';
 import {MatTab, MatTabGroup} from '@angular/material/tabs';
+import {provideHttpClient} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -45,9 +47,11 @@ import {MatTab, MatTabGroup} from '@angular/material/tabs';
     MatFormFieldModule,
     MatCardModule,
     MatTabGroup,
-    MatTab
+    MatTab,
+    ReactiveFormsModule
   ],
   providers: [
+    provideHttpClient(),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: {

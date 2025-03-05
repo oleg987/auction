@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 export interface Auction{
   id: string;
@@ -13,8 +13,13 @@ export interface Auction{
   templateUrl: './auction-list-item.component.html',
   styleUrl: './auction-list-item.component.scss'
 })
-export class AuctionListItemComponent {
+export class AuctionListItemComponent implements OnInit{
   @Input({required: true}) auction!: Auction;
+  duration: number = 0;
+
+  ngOnInit(): void {
+    this.duration = this.evaluateDuration();
+  }
 
   isActive() : boolean {
     return Date.now() > Date.parse(this.auction.start) && Date.now() < Date.parse(this.auction.end);
@@ -28,7 +33,7 @@ export class AuctionListItemComponent {
     return  Date.now() < Date.parse(this.auction.start)
   }
 
-  duration() : number {
+  evaluateDuration() : number {
     let duration = 0;
 
     if (this.isActive()){
@@ -39,6 +44,7 @@ export class AuctionListItemComponent {
       duration = Math.floor( (Date.parse(this.auction.start) - Date.now()) / 1000);
     }
 
+    console.log(duration);
     return duration;
   }
 }

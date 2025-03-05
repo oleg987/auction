@@ -1,0 +1,24 @@
+.card-wrapper{
+  display: flex;
+  justify-content: center;
+  margin: 5rem;
+}
+
+.mid-card{
+  display: flex;
+  justify-content: center;
+  width: 33%;
+}
+
+.full-width-element{
+  width: 100%;
+  align-items: center;
+}
+
+.form-element{
+  margin: 0.5rem;
+}
+
+.btn-long{
+  width: 100%;
+}
