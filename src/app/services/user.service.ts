@@ -33,6 +33,7 @@ export class UserService {
   signIn(request: SignInModel){
     return this.http.post<UserModel>('https://localhost:7042/api/v1/user/sign-in', request).pipe(
       tap(user => {
+        console.log(user);
         this.userSource.set(user);
       })
     );

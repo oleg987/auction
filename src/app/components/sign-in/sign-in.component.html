@@ -4,6 +4,7 @@
       <div>
         <mat-card-content>
           <span>Sign-in</span>
+          <mat-error *ngIf="unauhorized">Sign-in failed</mat-error>
         </mat-card-content>
       </div>
       <form [formGroup]="form" (submit)="submit()">
@@ -13,8 +14,8 @@
               <mat-label>E-mail</mat-label>
               <input formControlName="email" matInput placeholder="Enter your e-mail" required>
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-error *ngIf="!form.controls.email.untouched && form.controls.email.invalid">
-                <span>This is error.</span>
+              <mat-error *ngIf="!form.controls['email'].valid">
+                invalid e-mail
               </mat-error>
             </mat-form-field>
           </mat-card-content>
@@ -23,14 +24,17 @@
           <mat-card-content>
             <mat-form-field>
               <mat-label>Password</mat-label>
-              <input type="password" matInput placeholder="Enter your password">
+              <input formControlName="password" type="password" matInput placeholder="Enter your password">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-error *ngIf="!form.controls['password'].valid">
+                invalid password
+              </mat-error>
             </mat-form-field>
           </mat-card-content>
         </div>
         <div>
           <mat-card-content>
-            <button mat-flat-button (click)="submit()">Sign-in</button>
+            <button type="submit" mat-flat-button>Sign-in</button>
           </mat-card-content>
         </div>
       </form>
